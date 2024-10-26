@@ -1,0 +1,14 @@
+---
+- name: Test AWS connection
+  hosts: awsinstances
+  remote_user: ec2-user
+
+  tasks:
+    - name: Create Directory
+      command: touch test.txt
+
+    - name: Echo command
+      shell: echo "Connected to AWS instance" > test.txt 
+
+    - name: Install Minikube
+      shell: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
